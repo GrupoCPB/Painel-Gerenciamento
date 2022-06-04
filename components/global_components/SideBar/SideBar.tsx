@@ -1,11 +1,5 @@
 import { Box, Grid, Button } from "@mui/material";
-import HomeOutlinedIcon from '@mui/icons-material/HomeOutlined';
-import AccountBoxOutlinedIcon from '@mui/icons-material/AccountBoxOutlined';
-import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
-import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
-import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
-import BarChartIcon from '@mui/icons-material/BarChart';
-import Icon from "./Icon";
+import Icon from "../Icon";
 
 const BoxStyles = {
     width: '100%',
