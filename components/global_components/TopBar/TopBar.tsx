@@ -133,7 +133,6 @@ export default function PrimarySearchAppBar() {
                         <Grid item sx={StyledGridItem} className='userIconDiv' xs={1.5} display={{ xs: 'none', md: 'flex' }}>
                             <IconButton
                                 size="large"
-                                edge="end"
                                 aria-label="account of current user"
                                 aria-haspopup="true"
                                 onClick={handleProfileMenuOpen}

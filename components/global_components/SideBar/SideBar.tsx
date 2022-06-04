@@ -5,6 +5,7 @@ import MonitorHeartOutlinedIcon from '@mui/icons-material/MonitorHeartOutlined';
 import CampaignOutlinedIcon from '@mui/icons-material/CampaignOutlined';
 import StarBorderRoundedIcon from '@mui/icons-material/StarBorderRounded';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import Icon from "./Icon";
 
 const BoxStyles = {
     width: '100%',
@@ -36,27 +37,27 @@ export default function SideBar() {
         <Box sx={BoxStyles}>
             <Grid container columns={1}>
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<HomeOutlinedIcon />}>Home</Button>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth disabled sx={ButtonsStyles} startIcon={<AccountBoxOutlinedIcon />}>Usuários</Button>
+                    <Button fullWidth disabled sx={ButtonsStyles} startIcon={<Icon source='/support.png' />}>Usuários</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<MonitorHeartOutlinedIcon />}>Relatórios</Button>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/report.png' />}>Relatórios</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<CampaignOutlinedIcon />}>Notícias</Button>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/megaphone.png' />}>Notícias</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<StarBorderRoundedIcon />}>Votação</Button>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/rate.png' />}>Votação</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<BarChartIcon />}>Transparência</Button>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/connection.png' />}>Transparência</Button>
                 </Grid>
             </Grid>
         </Box>
