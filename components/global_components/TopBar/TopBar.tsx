@@ -114,7 +114,7 @@ export default function PrimarySearchAppBar() {
                             </Typography>
                         </Grid>
 
-                        <Grid item sx={StyledGridItem} xs={5} className='search'>
+                        <Grid item sx={StyledGridItem} xs={4.5} className='search'>
                             <Search>
                                 <SearchIconWrapper>
                                     <SearchIcon />
@@ -130,7 +130,7 @@ export default function PrimarySearchAppBar() {
                             <OngSelection />
                         </Grid>
 
-                        <Grid item sx={StyledGridItem} className='userIconDiv' xs={1.5} display={{ xs: 'none', md: 'flex' }}>
+                        <Grid item sx={StyledGridItem} className='userIconDiv' xs={2} display={{ xs: 'none', md: 'flex' }}>
                             <IconButton
                                 size="large"
                                 aria-label="account of current user"
