@@ -71,7 +71,7 @@ export default function UsersTable() {
     };
 
     return (
-        <Paper sx={PaperStyles}>
+        <Paper sx={PaperStyles} elevation={0}>
             <TableContainer sx={{borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}}>
                 <Table stickyHeader >
                     <TableHead>

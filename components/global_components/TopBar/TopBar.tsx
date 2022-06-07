@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AccountCircle from '@mui/icons-material/AccountCircle';
+import Image from 'next/image';
 import Grid from '@mui/material/Grid';
 import OngSelection from './OngSelection';
 
@@ -77,9 +77,13 @@ const StyledGridItem = {
     },
 
     '&.userIconDiv': {
+        alignItems: 'center',
         'span': {
-            marginLeft: '10px'
-        }
+            marginLeft: '10px',
+            fontWeight: '600',
+            color: '#5B5B5B'
+        },
+
     },
 }
 
@@ -131,16 +135,10 @@ export default function PrimarySearchAppBar() {
                         </Grid>
 
                         <Grid item sx={StyledGridItem} className='userIconDiv' xs={2} display={{ xs: 'none', md: 'flex' }}>
-                            <IconButton
-                                size="large"
-                                aria-label="account of current user"
-                                aria-haspopup="true"
-                                onClick={handleProfileMenuOpen}
-                                color="inherit"
-                            >
-                                <AccountCircle />
-                            </IconButton>
-                            <span>Ana Silva</span> 
+                            <Box sx={{ height: '30px' }}>
+                                <Image src='/user_image.png' alt='user' width={30} height={30}></Image>
+                            </Box>
+                            <span>Ana Silva</span>
                         </Grid>
                     </Grid>
                 </Toolbar>

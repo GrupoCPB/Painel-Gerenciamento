@@ -16,10 +16,11 @@ const ButtonsStyles = {
     '&.MuiButton-root': {
         '&:first-of-type': {
             backgroundColor: '#F1F2F3'
-        },
-        '&.last-of-type': {
-            backgroundColor: '#F1F2F3'
         }
+    },
+
+    '&.MuiButton-outlined': {
+        border: '1px solid #F1F2F3'
     }
 }
 

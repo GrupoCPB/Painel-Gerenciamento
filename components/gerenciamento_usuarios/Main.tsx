@@ -42,7 +42,7 @@ export default function Main() {
                             </Grid>
 
                             <Grid item xs={3} display='flex' justifyContent='flex-end' alignItems='start'>
-                                <Button sx={ButtonStyles} variant='contained'>+ Adicionar novo usuário</Button>
+                                <Button sx={ButtonStyles} disableElevation variant='contained'>+ Adicionar novo usuário</Button>
                             </Grid>
                         </Grid>
                     </Box>
