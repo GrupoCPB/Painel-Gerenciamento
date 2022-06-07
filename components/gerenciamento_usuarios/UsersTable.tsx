@@ -78,7 +78,7 @@ export default function UsersTable() {
                         <TableRow>
                             {columns.map((column) => (
                                 <TableCell
-                                    key={column.id}
+                                    key={Math.random() * 1000}
                                     align={column.align}
                                     style={{ minWidth: column.minWidth }}
                                 >
@@ -92,11 +92,11 @@ export default function UsersTable() {
                             .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                             .map((row) => {
                                 return (
-                                    <TableRow hover key={row.hash} sx={{ background: 'white' }}>
+                                    <TableRow hover key={Math.random() * 1000} sx={{ background: 'white' }}>
                                         {columns.map((column) => {
                                             const value = row[column.id];
                                             return (
-                                                <TableCell key={column.id} align={column.align}>
+                                                <TableCell key={Math.random() * 1000} align={column.align}>
                                                     {value}
                                                 </TableCell>
                                             );

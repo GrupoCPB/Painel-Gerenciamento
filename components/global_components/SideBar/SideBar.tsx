@@ -1,11 +1,18 @@
 import { Box, Grid, Button } from "@mui/material";
+import { useEffect } from "react";
 import Icon from "../Icon";
 
 const BoxStyles = {
-    width: '100%',
     paddingInline: '10px',
     paddingTop: '20px',
-    paddingBottom: '100px'
+    paddingBottom: '100px',
+    transition: 'transform 0.3s ease',
+    '&.open': {
+        transform: 'scaleX(1)',
+    },
+    '&.closed': {
+        transform: 'scaleX(0)',
+    },
 }
 
 const ButtonsStyles = {
@@ -26,9 +33,9 @@ const ButtonsStyles = {
     }
 }
 
-export default function SideBar() {
+export default function SideBar({ isOpen }: any) {
     return (
-        <Box sx={BoxStyles}>
+        <Box sx={BoxStyles} className={`${isOpen ? 'open' : 'closed'}`}>
             <Grid container columns={1}>
                 <Grid item xs={1}>
                     <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>

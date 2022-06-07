@@ -87,12 +87,7 @@ const StyledGridItem = {
     },
 }
 
-export default function PrimarySearchAppBar() {
-    const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-
-    const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
-        setAnchorEl(event.currentTarget);
-    };
+export default function TopBar({toggleSideMenu}:any) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -105,8 +100,9 @@ export default function PrimarySearchAppBar() {
                                 edge="start"
                                 color="inherit"
                                 aria-label="open drawer"
+                                onClick={toggleSideMenu}
                             >
-                                <MenuIcon />
+                                <MenuIcon sx={{pointerEvents: 'none'}} />
                             </IconButton>
                             <Typography
                                 variant="h6"
