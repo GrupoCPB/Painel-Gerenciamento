@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 
-export default function Icon({ source }:any) {
+export default function Icon({ source, width = 14, height = 14 }:any) {
     return (
-        <img src={source} alt='icon'></img>
+        <Image src={source} alt='icon' width={width} height={height}></Image>
     )
 }

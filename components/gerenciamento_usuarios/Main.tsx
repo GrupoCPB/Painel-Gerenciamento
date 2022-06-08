@@ -38,7 +38,7 @@ export default function Main() {
                         <Grid container columns={10} mb={2}>
                             <Grid item display='flex' flexDirection='column' xs={7}>
                                 <Typography variant='h5' fontWeight={600} color='#5B5B5B'>Gerenciamento de Usuários</Typography>
-                                <span className='icon-span'>Exibindo usuários em ordem alfabética <Icon source='/usersOrderIcon.png' /></span>
+                                <span className='icon-span'>Exibindo usuários em ordem alfabética <Icon source='/usersOrderIcon.png' width={24} height={24} /></span>
                             </Grid>
 
                             <Grid item xs={3} display='flex' justifyContent='flex-end' alignItems='start'>

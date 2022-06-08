@@ -1,6 +1,7 @@
 import { Box, Grid, Button } from "@mui/material";
 import { useEffect } from "react";
 import Icon from "../Icon";
+import TransparenciaButton from "./TransparenciaButton";
 
 const BoxStyles = {
     paddingInline: '10px',
@@ -20,9 +21,11 @@ const ButtonsStyles = {
     gridTemplateColumns: 'auto 80%',
     placeItems: 'center start',
     textTransform: 'none',
-    fontSize: '1.05rem',
     paddingInline: '15px 10px',
     color: '#5B5B5B',
+    fontSize: '13px',
+    fontWeight: '600',
+
     '& .MuiButton-startIcon': {
         marginRight: '20px'
     },
@@ -36,7 +39,7 @@ const ButtonsStyles = {
 export default function SideBar({ isOpen }: any) {
     return (
         <Box sx={BoxStyles} className={`${isOpen ? 'open' : 'closed'}`}>
-            <Grid container columns={1}>
+            <Grid container columns={1} borderBottom={'solid 1px #F9FAFD'} pb={5}>
                 <Grid item xs={1}>
                     <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>
                 </Grid>
@@ -58,7 +61,12 @@ export default function SideBar({ isOpen }: any) {
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/connection.png' />}>Transparência</Button>
+                    <TransparenciaButton />
+                </Grid>
+            </Grid>
+            <Grid container>
+                <Grid item pt={2}>
+                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/settings.png' width={40} height={40} />}>Configurações</Button>
                 </Grid>
             </Grid>
         </Box>
