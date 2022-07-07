@@ -1,5 +1,6 @@
 import { Box, Grid, Button } from "@mui/material";
-import { useEffect } from "react";
+import Router from "next/router";
+import { useEffect, useRef, useState } from "react";
 import Icon from "../Icon";
 import TransparenciaButton from "./TransparenciaButton";
 
@@ -37,31 +38,37 @@ const ButtonsStyles = {
 }
 
 export default function SideBar({ isOpen }: any) {
+    const [state, setState] = useState('')
+    useEffect(() => {
+        setState(Router.pathname)
+    }, [])
+
+
     return (
         <Box sx={BoxStyles} className={`${isOpen ? 'open' : 'closed'}`}>
             <Grid container columns={1} borderBottom={'solid 1px #F9FAFD'} pb={5}>
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>
+                    <Button fullWidth href="/" disabled={state === '/' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth disabled sx={ButtonsStyles} startIcon={<Icon source='/support.png' />}>Usuários</Button>
+                    <Button fullWidth href="/users" disabled={state === '/users' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/support.png' />}>Usuários</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/report.png' />}>Relatórios</Button>
+                    <Button fullWidth disabled={state === '/relatorios' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/report.png' />}>Relatórios</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/megaphone.png' />}>Notícias</Button>
+                    <Button fullWidth disabled={state === '/noticias' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/megaphone.png' />}>Notícias</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/rate.png' />}>Votação</Button>
+                    <Button fullWidth disabled={state === '/votacao' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/rate.png' />}>Votação</Button>
                 </Grid>
 
                 <Grid item xs={1}>
-                    <TransparenciaButton />
+                    <TransparenciaButton route={state}/>
                 </Grid>
             </Grid>
             <Grid container>

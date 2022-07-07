@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { Button, Grid } from '@mui/material';
 import Icon from '../Icon';
+import { useState } from 'react';
 
 const ButtonsStyles = {
     display: 'grid',
@@ -35,30 +36,29 @@ const DetailsStyle = {
     padding: '0',
 }
 
-export default function TransparenciaButton() {
+export default function TransparenciaButton({ route }: any) {
+    const [state, setState] = useState(true)
     return (
         <div>
-            <Accordion elevation={0} disableGutters>
-                <AccordionSummary
-                    expandIcon={<ExpandMoreIcon sx={{transform: 'translateY(-2px)'}}/>}
-                    aria-controls="panel1a-content"
-                    id="panel1a-header"
+            <Accordion elevation={0} expanded={state} disableGutters>
+                <AccordionSummary onClick={() => setState(!state)}
+                    expandIcon={<ExpandMoreIcon sx={{ transform: 'translateY(-2px)' }} />}
                     sx={SummaryStyle}
-                    className='aaaaaaaaaaaaaaaaaaaaa'
                 >
                     <Grid container justifyContent={'space-evenly'} columns={4}>
-                        <Grid item sx={{ width: '100%'}} xs={1}>
+                        <Grid item sx={{ width: '100%' }} xs={1}>
                             <Icon source='/connection.png' />
                         </Grid>
-                        <Grid item sx={{ width: '100%'}} xs={3}>
+                        <Grid item sx={{ width: '100%' }} xs={3}>
                             Transparencia
                         </Grid>
                     </Grid>
                 </AccordionSummary>
+
                 <AccordionDetails sx={DetailsStyle}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/money.png' />}>Relatório/Tempo real</Button>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Metas</Button>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Gerar relatórios</Button>
+                    <Button fullWidth href='/relatorio' disabled={route === '/relatorio' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/money.png' />}>Relatório/Tempo real</Button>
+                    <Button fullWidth disabled={route === '/metas' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Metas</Button>
+                    <Button fullWidth disabled={route === '/gerar_relatorios' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Gerar relatórios</Button>
                 </AccordionDetails>
             </Accordion>
         </div>

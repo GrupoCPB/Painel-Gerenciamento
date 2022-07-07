@@ -2,12 +2,12 @@ import type { NextPage } from 'next'
 import Main from '../components/gerenciamento_usuarios/Main'
 
 
-const Home: NextPage = () => {
+const Users: NextPage = () => {
   return (
     <div>
-      home
+      <Main />
     </div>
   )
 }
 
-export default Home
+export default Users

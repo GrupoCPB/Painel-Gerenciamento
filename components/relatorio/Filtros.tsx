@@ -39,6 +39,7 @@ const InputsStyle = {
 const ButtonStyles = {
     textTransform: 'none',
     fontWeight: '600',
+    marginBottom: '20px',
     
     '&.MuiButton-root': {
         backgroundColor: '#F03355',
@@ -54,20 +55,21 @@ export default function FiltroPainel() {
             </Typography>
 
             <FormGroup sx={FormGroupStyles}>
-                <FormLabel sx={{marginBottom: '10px'}}>PERMISSÕES</FormLabel>
-                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Admin' />} label='Admin' />
-                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Redatores' />} label='Redatores' />
-                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Convidados' />} label='Convidados' />
+                <FormLabel>RENDIMENTOS</FormLabel>
+                <RadioGroup defaultValue="Bloqueado" >
+                    <FormControlLabel value="Ativo" sx={InputsStyle} control={<Radio size='small' />} label="Entradas" />
+                    <FormControlLabel value="Bloqueado" sx={InputsStyle} control={<Radio size='small' />} label="Saídas" />
+                </RadioGroup>
                 <AplicarLimpar/>
 
             </FormGroup>
 
             <FormControl sx={FormGroupStyles}>
-                <FormLabel>STATUS</FormLabel>
-                <RadioGroup defaultValue="Bloqueado" >
-                    <FormControlLabel value="Ativo" sx={InputsStyle} control={<Radio size='small' />} label="Ativo" />
-                    <FormControlLabel value="Bloqueado" sx={InputsStyle} control={<Radio size='small' />} label="Bloqueado" />
-                </RadioGroup>
+                <FormLabel sx={{marginBottom: '10px'}}>ITENS</FormLabel>
+                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Alimentos' />} label='Alimentos' />
+                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Dinheiro' />} label='Dinheiro' />
+                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Roupas' />} label='Roupas' />
+                <FormControlLabel sx={InputsStyle} control={<Checkbox size='small' value='Outros' />} label='Outros' />
                 <AplicarLimpar/>
             </FormControl>
 
