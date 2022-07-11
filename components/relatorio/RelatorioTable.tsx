@@ -7,9 +7,10 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
+import { Typography } from '@mui/material';
 
 interface Column {
-    id: 'hash' | 'avatar' | 'name' | 'email' | 'cpf' | 'status';
+    id: 'hash' | 'data' | 'name' | 'tipo' | 'quantidade' | 'valor';
     label: string;
     minWidth?: number;
     align?: 'center';
@@ -17,37 +18,39 @@ interface Column {
 
 const columns: readonly Column[] = [
     { id: 'hash', label: '#', align: 'center' },
-    { id: 'avatar', label: 'Avatar', align: 'center' },
+    { id: 'data', label: 'Data', align: 'center' },
     { id: 'name', label: 'Nome', align: 'center' },
-    { id: 'email', label: 'Email', align: 'center' },
-    { id: 'cpf', label: 'CPF', align: 'center' },
-    { id: 'status', label: 'Status', align: 'center' }
+    { id: 'tipo', label: 'Tipo', align: 'center' },
+    { id: 'quantidade', label: 'Quantidade', align: 'center' },
+    { id: 'valor', label: 'Valor', align: 'center' }
 ];
 
 interface Data {
     hash: number;
-    avatar: string;
+    data: string;
     name: string;
-    email: string;
-    cpf: number;
-    status: string
+    tipo: string;
+    quantidade: number;
+    valor: string
 }
 
 function createData(
     hash: number,
-    avatar: string,
+    data: string,
     name: string,
-    email: string,
-    cpf: number,
-    status: string
+    tipo: string,
+    quantidade: number,
+    valor: string
 ): Data {
-    return { hash, avatar, name, email, cpf, status };
+    return { hash, data, name, tipo, quantidade, valor };
 }
 
 const rows = [
-    createData(1, 'a', 'a', 'a', 1, 'status'),
-    createData(1, 'a', 'a', 'a', 1, 'status'),
-    createData(1, 'a', 'a', 'a', 1, 'status'),
+    createData(5, '04/04/22', 'Ana Carla Silva Souza', 'Alimentos', 20, 'R$ 13.505,00'),
+    createData(5, '04/04/22', 'Ana Carla Silva Souza', 'Alimentos', 20, 'R$ 13.505,00'),
+    createData(5, '04/04/22', 'Ana Carla Silva Souza', 'Alimentos', 20, 'R$ 13.505,00'),
+    createData(5, '04/04/22', 'Ana Carla Silva Souza', 'Alimentos', 20, 'R$ 13.505,00'),
+    createData(5, '04/04/22', 'Ana Carla Silva Souza', 'Alimentos', 20, 'Não se aplica'),
 ];
 
 const PaperStyles = {
@@ -72,6 +75,10 @@ export default function RelatorioTable() {
 
     return (
         <Paper sx={PaperStyles} elevation={0}>
+            <Typography component='h3' mb={3} fontWeight={600} color='#414141'>
+                Exibindo todas as transações
+            </Typography>
+
             <TableContainer sx={{borderTopLeftRadius: '5px', borderTopRightRadius: '5px'}}>
                 <Table stickyHeader >
                     <TableHead>
@@ -97,7 +104,14 @@ export default function RelatorioTable() {
                                             const value = row[column.id];
                                             return (
                                                 <TableCell key={Math.random() * 1000} align={column.align}>
-                                                    {value}
+                                                    {
+                                                        column.id === 'valor' ? 
+                                                        <Typography component='p' color='#5D79DC' fontWeight='600'>
+                                                            {value}
+                                                        </Typography>
+                                                        :
+                                                        value
+                                                    }
                                                 </TableCell>
                                             );
                                         })}

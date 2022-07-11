@@ -3,9 +3,10 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
-import Icon from '../global_components/Icon';
 import Filtro from './Filtros';
 import RelatorioTable from './RelatorioTable';
+import ToggleButtons from './Toggle';
+import TotalBoxes from './TotalBoxes';
 
 const MainStyles = {
     background: 'white',
@@ -26,7 +27,7 @@ const MainStyles = {
 const ButtonStyles = {
     textTransform: 'none',
     fontWeight: '600',
-    
+
     '&.MuiButton-root': {
         backgroundColor: '#6E84A5',
         width: 'max-content',
@@ -47,11 +48,32 @@ export default function Main() {
                             <Grid item display='flex' flexDirection='column'>
                                 <Typography variant='h5' fontWeight={600} color='#5B5B5B'>Relatório em tempo real</Typography>
                             </Grid>
-                            
+
                             <Grid item xs={'auto'} display='flex' justifyContent='space-between'>
                                 <Button sx={ButtonStyles} startIcon={<Image src='/plus-circle.png' alt='a' width={20} height={20} />} disableElevation variant='contained'>Nova doação</Button>
                                 <Button sx={ButtonStyles} startIcon={<Image src='/plus-circle (1).png' alt='a' width={20} height={20} />} disableElevation variant='outlined'>Nova despesa</Button>
                             </Grid>
+                        </Grid>
+                    </Box>
+                    <Box>
+                        <Grid container columns={7}>
+                            <Grid item xs={'auto'}>
+                                <Typography component='span' fontWeight={600} fontSize={16} color='#5B5B5B'>Faturamento total</Typography>
+                            </Grid>
+                            <Grid item xs={'auto'} display='flex' alignItems='center'>
+                                <ToggleButtons />
+                            </Grid>
+                        </Grid>
+                    </Box>
+                    <Box mt={2} mb={5}>
+                        <Grid container columns={9} justifyContent='space-between'>
+                            {['arrecadado', 'utilizado', 'rendimentos', 'disponível'].map(el => {
+                                return (
+                                    <Grid item xs={2.15} key={Math.random() * 1000}>
+                                        <TotalBoxes type={el} />
+                                    </Grid>
+                                )
+                            })}
                         </Grid>
                     </Box>
                     <Box>
