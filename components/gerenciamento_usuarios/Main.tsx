@@ -31,12 +31,12 @@ const ButtonStyles = {
 
 export default function Main() {
     return (
-        <Grid container columns={20}>
-            <Grid item xs={15.8}>
+        <Grid container columns={20} pr={1}>
+            <Grid item xs={16.5}>
                 <Container component='main' maxWidth='lg' sx={MainStyles}>
                     <Box>
                         <Grid container columns={10} mb={2}>
-                            <Grid item display='flex' flexDirection='column' xs={7}>
+                            <Grid item xs={7} display='flex' flexDirection='column'>
                                 <Typography variant='h5' fontWeight={600} color='#5B5B5B'>Gerenciamento de Usuários</Typography>
                                 <span className='icon-span'>Exibindo usuários em ordem alfabética <Icon source='/usersOrderIcon.png' width={24} height={24} /></span>
                             </Grid>

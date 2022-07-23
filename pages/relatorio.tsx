@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Main from '../components/relatorio/Main'
+import Main from '../components/relatorio_tempo_real/Main'
 
 
 const Relatorio: NextPage = () => {

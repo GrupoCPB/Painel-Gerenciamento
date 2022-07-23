@@ -1,81 +1,157 @@
-import { Box, Grid, Button } from "@mui/material";
-import Router from "next/router";
-import { useEffect, useRef, useState } from "react";
+import { styled } from '@mui/material/styles';
+import Box from '@mui/material/Box';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import Divider from '@mui/material/Divider';
+import ListItem from '@mui/material/ListItem';
+import Button from "@mui/material/Button";
 import Icon from "../Icon";
-import TransparenciaButton from "./TransparenciaButton";
+import Router from "next/router";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
 
-const BoxStyles = {
-    paddingInline: '10px',
-    paddingTop: '20px',
-    paddingBottom: '100px',
-    transition: 'transform 0.3s ease',
-    '&.open': {
-        transform: 'scaleX(1)',
-    },
-    '&.closed': {
-        transform: 'scaleX(0)',
-    },
-}
+const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
+    open?: boolean;
+}>(({ theme, open }) => ({
+    flexGrow: 1,
+    padding: theme.spacing(3),
+    transition: theme.transitions.create('margin', {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen,
+    }),
+    marginLeft: '-200px',
+    ...(open && {
+        transition: theme.transitions.create('margin', {
+            easing: theme.transitions.easing.easeOut,
+            duration: theme.transitions.duration.enteringScreen,
+        }),
+        marginLeft: 0,
+    }),
+    backgroundColor: '#E5E5E5'
+}));
 
-const ButtonsStyles = {
-    display: 'grid',
-    gridTemplateColumns: 'auto 80%',
-    placeItems: 'center start',
+const StyledListButton = {
+    width: '90%',
+    margin: '4px auto',
     textTransform: 'none',
-    paddingInline: '15px 10px',
+    justifyContent: 'flex-start',
+    padding: '10px',
     color: '#5B5B5B',
-    fontSize: '13px',
-    fontWeight: '600',
-
     '& .MuiButton-startIcon': {
-        marginRight: '20px'
+        marginLeft: '0',
+        marginRight: '15px'
     },
-
     '&.Mui-disabled': {
         background: '#D7DEE9',
         color: '#5B5B5B'
     }
 }
 
-export default function SideBar({ isOpen }: any) {
+class Item {
+    title: string;
+    url: string;
+    icon: string;
+    constructor(title: string, url: string, icon: string) {
+        this.title = title,
+            this.url = url,
+            this.icon = icon
+    }
+}
+
+const items = [
+    new Item('Home', '/', '/home.png'),
+    new Item('Usuários', '/users', '/support.png'),
+    new Item('Relatórios', '/relatorio', '/report.png'),
+    new Item('Notícias', '/noticias', '/megaphone.png'),
+    new Item('Votação', '/votacao', '/rate.png'),
+]
+
+const ListItemButton = ({ text, icon, pageURL, click, routerPath }: any) => {
     const [state, setState] = useState('')
+
     useEffect(() => {
         setState(Router.pathname)
     }, [])
+    
+    return (
+        <>
+            <Link href={pageURL}>
+                <Button
+                    startIcon={<Icon source={icon} />}
+                    sx={StyledListButton}
+                    disabled={state === pageURL ? true : false}
+                >
+                    {text}
+                </Button>
+            </Link>
+        </>
+    )
+}
 
+export default function SideBar({ isOpen, children }: any) {
+    const pathRef = useRef('')
+    useEffect(() => {
+        pathRef.current = Router.pathname;
+    }, [])
 
     return (
-        <Box sx={BoxStyles} className={`${isOpen ? 'open' : 'closed'}`}>
-            <Grid container columns={1} borderBottom={'solid 1px #F9FAFD'} pb={5}>
-                <Grid item xs={1}>
-                    <Button fullWidth href="/" disabled={state === '/' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/home.png' />}>Home</Button>
-                </Grid>
+        <Box sx={{ display: 'flex' }}>
+            <Drawer
+                sx={{
+                    width: '200px',
+                    flexShrink: 0,
+                    height: '100vh',
+                    transform: 'translateY(10px)',
+                    '& .MuiDrawer-paper': {
+                        width: '200px',
+                        boxSizing: 'border-box',
+                        border: 0
+                    },
+                }}
+                variant="persistent"
+                open={isOpen}
 
-                <Grid item xs={1}>
-                    <Button fullWidth href="/users" disabled={state === '/users' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/support.png' />}>Usuários</Button>
-                </Grid>
+            >
+                <List>
+                    {items.map((el) => (
+                        <ListItem key={Math.random() * 1000} disablePadding sx={{ display: 'flex' }}>
+                            {
+                                (() => {
+                                    switch (el.title) {
+                                        case 'Home':
+                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                            break;
 
-                <Grid item xs={1}>
-                    <Button fullWidth disabled={state === '/relatorios' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/report.png' />}>Relatórios</Button>
-                </Grid>
+                                        case 'Usuários':
+                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                            break;
 
-                <Grid item xs={1}>
-                    <Button fullWidth disabled={state === '/noticias' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/megaphone.png' />}>Notícias</Button>
-                </Grid>
+                                        case 'Relatórios':
+                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                            break;
 
-                <Grid item xs={1}>
-                    <Button fullWidth disabled={state === '/votacao' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/rate.png' />}>Votação</Button>
-                </Grid>
+                                        case 'Notícias':
+                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                            break;
 
-                <Grid item xs={1}>
-                    <TransparenciaButton route={state}/>
-                </Grid>
-            </Grid>
-            <Grid container>
-                <Grid item pt={2}>
-                    <Button fullWidth sx={ButtonsStyles} startIcon={<Icon source='/settings.png' width={40} height={40} />}>Configurações</Button>
-                </Grid>
-            </Grid>
-        </Box>
-    )
+                                        case 'Votação':
+                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                            break;
+
+                                        default:
+                                            break;
+                                    }
+                                })()
+                            }
+                        </ListItem>
+                    ))}
+                </List>
+                <Divider />
+
+            </Drawer>
+            <Main open={isOpen}>
+                {children}
+            </Main>
+        </Box >
+    );
 }
