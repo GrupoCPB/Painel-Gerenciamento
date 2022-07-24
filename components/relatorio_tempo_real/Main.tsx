@@ -41,7 +41,7 @@ const ButtonStyles = {
 export default function Main() {
     return (
         <Grid container columns={20}>
-            <Grid item xs={15.8}>
+            <Grid item xs={16.5}>
                 <Container component='main' maxWidth='lg' sx={MainStyles}>
                     <Box>
                         <Grid container columns={10} mb={2} justifyContent='space-between'>

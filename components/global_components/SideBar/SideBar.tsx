@@ -2,13 +2,13 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import Button from "@mui/material/Button";
 import Icon from "../Icon";
 import Router from "next/router";
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import TransparenciaButton from './TransparenciaButton';
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })<{
     open?: boolean;
@@ -64,6 +64,7 @@ const items = [
     new Item('Relatórios', '/relatorio', '/report.png'),
     new Item('Notícias', '/noticias', '/megaphone.png'),
     new Item('Votação', '/votacao', '/rate.png'),
+    new Item('Transparêcnia', '/votacao', '/rate.png'),
 ]
 
 const ListItemButton = ({ text, icon, pageURL, click, routerPath }: any) => {
@@ -72,7 +73,7 @@ const ListItemButton = ({ text, icon, pageURL, click, routerPath }: any) => {
     useEffect(() => {
         setState(Router.pathname)
     }, [])
-    
+
     return (
         <>
             <Link href={pageURL}>
@@ -138,6 +139,9 @@ export default function SideBar({ isOpen, children }: any) {
                                             return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
                                             break;
 
+                                        case 'Transparêcnia':
+                                            return <TransparenciaButton route={el.url} />
+
                                         default:
                                             break;
                                     }
@@ -146,8 +150,6 @@ export default function SideBar({ isOpen, children }: any) {
                         </ListItem>
                     ))}
                 </List>
-                <Divider />
-
             </Drawer>
             <Main open={isOpen}>
                 {children}
