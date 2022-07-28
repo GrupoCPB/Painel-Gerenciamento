@@ -2,7 +2,6 @@
 import * as React from 'react';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Grid from '@mui/material/Grid';
 import CustomMenuItem from './CustomMenuItem';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
@@ -29,10 +28,6 @@ const MenuStyles = {
             }
         }
     }
-}
-
-const teste = {
-    background: 'red'
 }
 
 export default function OngSelection() {

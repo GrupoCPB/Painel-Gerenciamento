@@ -10,11 +10,12 @@ import TotalBoxes from './TotalBoxes';
 
 const MainStyles = {
     background: 'white',
-    margin: '18px',
+    marginTop: '0',
+    marginLeft: '0',
     borderRadius: '4px',
     paddingTop: '30px',
     paddingBottom: '50px',
-    width: '95%',
+    width: '97%',
 
     '& .icon-span': {
         display: 'flex',

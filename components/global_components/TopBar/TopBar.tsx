@@ -7,6 +7,7 @@ import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import InputBase from '@mui/material/InputBase';
 import MenuIcon from '@mui/icons-material/Menu';
+import Close from '@mui/icons-material/Close';
 import SearchIcon from '@mui/icons-material/Search';
 import Image from 'next/image';
 import Grid from '@mui/material/Grid';
@@ -87,7 +88,7 @@ const StyledGridItem = {
     },
 }
 
-export default function TopBar({toggleSideMenu}:any) {
+export default function TopBar({toggleSideMenu, isOpen}:any) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -102,7 +103,7 @@ export default function TopBar({toggleSideMenu}:any) {
                                 aria-label="open drawer"
                                 onClick={toggleSideMenu}
                             >
-                                <MenuIcon sx={{pointerEvents: 'none'}} />
+                                {isOpen ? <Close sx={{pointerEvents: 'none'}} /> : <MenuIcon sx={{pointerEvents: 'none'}} />}
                             </IconButton>
                             <Typography
                                 variant="h6"

@@ -2,13 +2,12 @@ import { Box, Checkbox, FormControl, FormLabel, Radio, RadioGroup, FormControlLa
 import AplicarLimpar from '../global_components/FiltroAplicarLimparButtons';
 
 const BoxStyles = {
-    marginTop: '18px',
     marginBottom: '18px',
     borderRadius: '4px',
     float: 'right',
     width: '100%',
     backgroundColor: 'white',
-    height: 'calc(100% - 36px)',
+    height: '100%'
 }
 
 const FormGroupStyles = {

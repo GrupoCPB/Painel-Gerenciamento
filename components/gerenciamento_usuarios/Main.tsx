@@ -8,11 +8,11 @@ import UsersTable from './UsersTable';
 
 const MainStyles = {
     background: 'white',
-    margin: '18px',
     borderRadius: '4px',
     paddingTop: '30px',
+    marginLeft: '0px',
     paddingBottom: '50px',
-    width: '95%',
+    width: '97%',
 
     '& .icon-span': {
         display: 'flex',
