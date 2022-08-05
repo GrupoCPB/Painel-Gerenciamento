@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
       {/* o componente principal fica dentro do SideBar para poder usar o efeito Drawer do MUI*/}
       <SideBar isOpen={isOpen}> 
-        <Component {...pageProps} />
+        {<Component {...pageProps} /> || <div>Sem nada por enquanto</div>}
       </SideBar>
     </>
   )

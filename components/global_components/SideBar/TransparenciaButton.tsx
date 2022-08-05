@@ -1,11 +1,11 @@
 import Accordion from '@mui/material/Accordion';
-import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Router from "next/router";
 import { Button, Grid } from '@mui/material';
 import Icon from '../Icon';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import Link from 'next/link';
 
 const ButtonsStyles = {
     display: 'grid',
@@ -13,6 +13,7 @@ const ButtonsStyles = {
     placeItems: 'center start',
     textTransform: 'none',
     fontSize: '.8rem',
+    whiteSpace: 'nowrap',
     color: '#5B5B5B',
     '& .MuiButton-startIcon': {
         marginRight: '20px'
@@ -21,6 +22,10 @@ const ButtonsStyles = {
     '&.Mui-disabled': {
         background: '#D7DEE9',
         color: '#5B5B5B'
+    },
+
+    '& #text': {
+        color: 'red'
     }
 }
 
@@ -47,23 +52,43 @@ const StyledListButton = {
 }
 
 export default function TransparenciaButton({ route }: any) {
-    const [state, setState] = useState(true)
+    const [state, setState] = useState({
+        route: '',
+        expanded: true
+    })
+
+    useEffect(() => {
+        setState({
+            ...state,
+            route: Router.pathname,
+        })
+    }, [])
+
     return (
         <div>
-            <Accordion elevation={0} expanded={state} disableGutters>
+            <Accordion elevation={0} expanded={state.expanded} disableGutters>
                 <Button
                     startIcon={<Icon source={'/connection.png'} />}
                     endIcon={<ExpandMoreIcon />}
                     sx={StyledListButton}
-                    onClick={() => setState(!state)}
+                    onClick={() => setState({
+                        ...state,
+                        expanded: !state.expanded
+                    })}
                 >
                     Transparência
                 </Button>
 
                 <AccordionDetails sx={DetailsStyle}>
-                    <Button fullWidth href='/relatorio' disabled={route === '/relatorio' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/money.png' />}>Relatório/Tempo real</Button>
-                    <Button fullWidth disabled={route === '/metas' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Metas</Button>
-                    <Button fullWidth disabled={route === '/gerar_relatorios' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Gerar relatórios</Button>
+                    <Link href='/relatorioTempoReal'>
+                        <Button fullWidth disabled={state.route === '/relatorioTempoReal' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/money.png' />}>Relatório/Tempo real</Button>
+                    </Link>
+                    <Link href='/'>
+                        <Button fullWidth disabled={state.route === '/metas' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Metas</Button>
+                    </Link>
+                    <Link href='/gerarRelatorio'>
+                        <Button fullWidth disabled={state.route === '/gerarRelatorio' ? true : false} sx={ButtonsStyles} startIcon={<Icon source='/target.png' />}>Gerar relatórios</Button>
+                    </Link>
                 </AccordionDetails>
             </Accordion>
         </div>

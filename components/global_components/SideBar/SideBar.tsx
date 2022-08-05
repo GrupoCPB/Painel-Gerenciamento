@@ -114,41 +114,18 @@ export default function SideBar({ isOpen, children }: any) {
 
             >
                 <List>
-                    {items.map((el) => (
-                        <ListItem key={Math.random() * 1000} disablePadding sx={{ display: 'flex' }}>
-                            {
-                                (() => {
-                                    switch (el.title) {
-                                        case 'Home':
-                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
-                                            break;
-
-                                        case 'Usuários':
-                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
-                                            break;
-
-                                        case 'Relatórios':
-                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
-                                            break;
-
-                                        case 'Notícias':
-                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
-                                            break;
-
-                                        case 'Votação':
-                                            return <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
-                                            break;
-
-                                        case 'Transparêcnia':
-                                            return <TransparenciaButton route={el.url} />
-
-                                        default:
-                                            break;
-                                    }
-                                })()
-                            }
-                        </ListItem>
-                    ))}
+                    {
+                        items.map((el) => (
+                            <ListItem key={Math.random() * 1000} disablePadding sx={{ display: 'flex' }}>
+                                {
+                                    el.title === 'Transparêcnia' ?
+                                        <TransparenciaButton route={el.url} />
+                                        :
+                                        <ListItemButton text={el.title} icon={el.icon} pageURL={el.url} />
+                                }
+                            </ListItem>
+                        ))
+                    }
                 </List>
             </Drawer>
             <Main open={isOpen}>

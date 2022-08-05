@@ -38,12 +38,16 @@ const ContainerStyles = {
     }
 }
 
-export default function NovaDoacao() {
+type NovaDoacao = {
+    DoacaoOuDespesa?: 'doacao' | 'despesa'
+}
+
+export default function NovaDoacaoOuDespesa({DoacaoOuDespesa = 'doacao'}:NovaDoacao) {
 
 
     return (
         <Container sx={ContainerStyles}>
-            <Typography variant='h5' fontWeight={600} mb={6} color='#5B5B5B'>Nova doação</Typography>
+            <Typography variant='h5' fontWeight={600} mb={6} color='#5B5B5B'>Nova {`${DoacaoOuDespesa === 'doacao' ? 'doação' : 'despesa'}`}</Typography>
             <Form>
                 <Grid container columns={20} rowGap={4}>
                     <Grid item container columns={10} xs={20} justifyContent='space-between'>
@@ -176,7 +180,7 @@ export default function NovaDoacao() {
 
                     <Grid item xs={20} display='flex' justifyContent='center'>
                         <Button variant="contained" sx={{width:'40%', textTransform: 'none', background: '#6E84A5', paddingTop: '10px', paddingBottom: '10px'}}>
-                            Salvar nova doação
+                            Salvar nova {`${DoacaoOuDespesa === 'doacao' ? 'doação' : 'despesa'}`}
                         </Button>
                     </Grid>
                 </Grid>

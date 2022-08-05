@@ -3,6 +3,7 @@ import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Grid from '@mui/material/Grid';
 import Image from 'next/image';
+import Link from 'next/link';
 import Filtro from './Filtros';
 import RelatorioTable from './RelatorioTable';
 import ToggleButtons from './Toggle';
@@ -51,8 +52,25 @@ export default function Main() {
                             </Grid>
 
                             <Grid item xs={'auto'} display='flex' justifyContent='space-between'>
-                                <Button sx={ButtonStyles} startIcon={<Image src='/plus-circle.png' alt='a' width={20} height={20} />} disableElevation variant='contained'>Nova doação</Button>
-                                <Button sx={ButtonStyles} startIcon={<Image src='/plus-circle (1).png' alt='a' width={20} height={20} />} disableElevation variant='outlined'>Nova despesa</Button>
+                                <Link href='/registrar/registrarDoacao'>
+                                    <Button
+                                        sx={ButtonStyles}
+                                        startIcon={<Image src='/plus-circle.png' alt='a' width={20} height={20} />}
+                                        disableElevation variant='contained'
+                                    >
+                                        Nova doação
+                                    </Button>
+                                </Link>
+                                <Link href='/registrar/registrarDespesa'>
+                                    <Button
+                                        sx={ButtonStyles}
+                                        startIcon={<Image src='/plus-circle (1).png' alt='a' width={20} height={20} />}
+                                        disableElevation
+                                        variant='outlined'
+                                    >
+                                        Nova despesa
+                                    </Button>
+                                </Link>
                             </Grid>
                         </Grid>
                     </Box>
